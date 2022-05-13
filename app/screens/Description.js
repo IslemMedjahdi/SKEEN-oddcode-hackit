@@ -64,7 +64,7 @@ export default function Description({ navigation }) {
             onPress={() => navigation.replace("Login")}
             android_ripple={{ color: "#ffffff80" }}
             style={{
-              backgroundColor: "#F4CBF0",
+              backgroundColor: "#1F1F1F",
               width: "80%",
               paddingVertical: 20,
               alignItems: "center",
@@ -75,7 +75,7 @@ export default function Description({ navigation }) {
           >
             <Text
               style={{
-                color: "#1F1F1F",
+                color: "#FFFFFF",
                 fontFamily: "MontserratBold",
                 fontSize: 17,
                 marginRight: 10,

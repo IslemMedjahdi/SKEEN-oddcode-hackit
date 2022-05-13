@@ -51,7 +51,7 @@ export default function SignUp({ navigation }) {
           gender: data.gender,
         })
           .then(() => {
-            navigation.replace("SelectWearable");
+            navigation.replace("Home");
           })
           .catch((e) => setError(e.code));
       })
@@ -63,7 +63,7 @@ export default function SignUp({ navigation }) {
       <View
         style={{
           height: (35 * HEIGHT) / 100,
-          backgroundColor: "#B1EDC6",
+          backgroundColor: "#2D1010",
           borderRadius: (45 * WIDTH) / 100,
           borderTopLeftRadius: 0,
           borderTopRightRadius: 0,
@@ -72,14 +72,14 @@ export default function SignUp({ navigation }) {
           paddingVertical: 10,
         }}
       >
-        <Text style={{ fontFamily: "Cinzel", color: "#1F1F1F", fontSize: 20 }}>
+        <Text style={{ fontFamily: "Cinzel", color: "#FFFFFF", fontSize: 20 }}>
           Welcome gorgeous creature
         </Text>
         <Text
           style={{
             width: "75%",
             fontFamily: "Montserrat",
-            color: "#1F1F1F",
+            color: "#FFFFFF",
             fontSize: 16,
           }}
         >
@@ -108,7 +108,7 @@ export default function SignUp({ navigation }) {
           <TextInput
             onChangeText={(text) => setData({ ...data, fName: text })}
             style={{
-              backgroundColor: "#B1EDC640",
+              backgroundColor: "#FFFFFF",
               color: "black",
               width: "100%",
               padding: 10,
@@ -116,7 +116,7 @@ export default function SignUp({ navigation }) {
               marginTop: 7,
               color: "#1F1F1F",
             }}
-            placeholder="Islem Medjahdi"
+            placeholder="Nom et Prénom"
           />
         </View>
         <View style={{ alignItems: "center", width: "80%" }}>
@@ -133,7 +133,7 @@ export default function SignUp({ navigation }) {
             keyboardType="email-address"
             onChangeText={(text) => setData({ ...data, email: text })}
             style={{
-              backgroundColor: "#B1EDC640",
+              backgroundColor: "#FFFFFF",
               color: "black",
               width: "100%",
               padding: 10,
@@ -158,7 +158,7 @@ export default function SignUp({ navigation }) {
             secureTextEntry
             onChangeText={(text) => setData({ ...data, password: text })}
             style={{
-              backgroundColor: "#B1EDC640",
+              backgroundColor: "#FFFFFF",
               color: "black",
               width: "100%",
               padding: 10,
@@ -183,7 +183,7 @@ export default function SignUp({ navigation }) {
             secureTextEntry
             onChangeText={(text) => setData({ ...data, confirmPassword: text })}
             style={{
-              backgroundColor: "#B1EDC640",
+              backgroundColor: "#FFFFFF",
               color: "black",
               width: "100%",
               padding: 10,
@@ -216,7 +216,7 @@ export default function SignUp({ navigation }) {
               keyboardType="decimal-pad"
               onChangeText={(text) => setData({ ...data, age: text })}
               style={{
-                backgroundColor: "#B1EDC640",
+                backgroundColor: "#FFFFFF",
                 color: "black",
                 width: "100%",
                 padding: 10,
@@ -240,7 +240,7 @@ export default function SignUp({ navigation }) {
             <TextInput
               onChangeText={(text) => setData({ ...data, gender: text })}
               style={{
-                backgroundColor: "#B1EDC640",
+                backgroundColor: "#FFFFFF",
                 color: "black",
                 width: "100%",
                 padding: 10,

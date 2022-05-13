@@ -26,7 +26,7 @@ export default function SelectWearable({ navigation }) {
         style={{
           height: (20 * HEIGHT) / 100,
           alignItems: "center",
-          backgroundColor: "#F4CBF0",
+          backgroundColor: "#2D1010",
           borderRadius: (45 * WIDTH) / 100,
           borderTopLeftRadius: 0,
           borderTopRightRadius: 0,
