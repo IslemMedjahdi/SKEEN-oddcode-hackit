@@ -24,7 +24,7 @@ export default function GetStarted({ navigation }) {
           <View
             style={{
               width: "100%",
-              backgroundColor: "rgba(31, 31, 31, 0.5)",
+              backgroundColor: "#E5E5E560",
               borderRadius: 200,
               borderBottomLeftRadius: 0,
               borderBottomRightRadius: 0,
@@ -39,7 +39,7 @@ export default function GetStarted({ navigation }) {
               />
               <Text
                 style={{
-                  color: "white",
+                  color: "#1F1F1F",
                   fontFamily: "Cinzel",
                   fontSize: 32,
                   transform: [{ translateY: -40 }],
@@ -61,7 +61,7 @@ export default function GetStarted({ navigation }) {
                 onPress={() => navigation.replace("Description")}
                 android_ripple={{ color: "#ffffff80" }}
                 style={{
-                  backgroundColor: "#F4CBF0",
+                  backgroundColor: "#1F1F1F",
                   width: "80%",
                   paddingVertical: 20,
                   alignItems: "center",
@@ -72,7 +72,7 @@ export default function GetStarted({ navigation }) {
               >
                 <Text
                   style={{
-                    color: "#1F1F1F",
+                    color: "white",
                     fontFamily: "MontserratBold",
                     fontSize: 17,
                     marginRight: 10,

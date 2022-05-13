@@ -51,7 +51,7 @@ export default function SignUp({ navigation }) {
           gender: data.gender,
         })
           .then(() => {
-            navigation.replace("Home");
+            navigation.replace("SelectWearable");
           })
           .catch((e) => setError(e.code));
       })
@@ -115,6 +115,8 @@ export default function SignUp({ navigation }) {
               borderRadius: 10,
               marginTop: 7,
               color: "#1F1F1F",
+              borderWidth: 1,
+              borderColor: "#C97C25",
             }}
             placeholder="Nom et Prénom"
           />
@@ -140,6 +142,8 @@ export default function SignUp({ navigation }) {
               borderRadius: 10,
               marginTop: 7,
               color: "#1F1F1F",
+              borderWidth: 1,
+              borderColor: "#C97C25",
             }}
             placeholder="example@gmail.com"
           />
@@ -165,6 +169,8 @@ export default function SignUp({ navigation }) {
               borderRadius: 10,
               marginTop: 7,
               color: "#1F1F1F",
+              borderWidth: 1,
+              borderColor: "#C97C25",
             }}
             placeholder="* * * * * * * * * "
           />
@@ -190,6 +196,8 @@ export default function SignUp({ navigation }) {
               borderRadius: 10,
               marginTop: 7,
               color: "#1F1F1F",
+              borderWidth: 1,
+              borderColor: "#C97C25",
             }}
             placeholder="* * * * * * * * * "
           />
@@ -223,6 +231,8 @@ export default function SignUp({ navigation }) {
                 borderRadius: 10,
                 marginTop: 7,
                 color: "#1F1F1F",
+                borderWidth: 1,
+                borderColor: "#C97C25",
               }}
               placeholder="age"
             />
@@ -247,6 +257,8 @@ export default function SignUp({ navigation }) {
                 borderRadius: 10,
                 marginTop: 7,
                 color: "#1F1F1F",
+                borderWidth: 1,
+                borderColor: "#C97C25",
               }}
               placeholder="gender"
             />

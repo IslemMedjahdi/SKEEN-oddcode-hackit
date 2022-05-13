@@ -12,6 +12,8 @@ import SignUp from "./app/screens/SignUp";
 import Description from "./app/screens/Description";
 import SelectWearable from "./app/screens/SelectWearable";
 import Home from "./app/screens/Home";
+import Camera from "./app/screens/Camera";
+import Results from "./app/screens/Results";
 
 export default function App() {
   const [fontLoaded, setfontLoaded] = useState(false);
@@ -46,6 +48,8 @@ export default function App() {
         <Stack.Screen name="SelectWearable" component={SelectWearable} />
         <Stack.Screen name="Description" component={Description} />
         <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Camera" component={Camera} />
+        <Stack.Screen name="Results" component={Results} />
       </Stack.Navigator>
     </NavigationContainer>
   );

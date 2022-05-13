@@ -15,7 +15,7 @@ export default function Login({ navigation }) {
     setError("");
     signInWithEmailAndPassword(auth, data.email.trim(), data.password)
       .then(() => {
-        navigation.replace("Home");
+        navigation.replace("SelectWearable");
       })
       .catch((e) => {
         setError(e.code);
@@ -78,9 +78,11 @@ export default function Login({ navigation }) {
               width: "100%",
               padding: 10,
               borderRadius: 10,
-              borderColor : "#C97C25",
+              borderColor: "#C97C25",
               marginTop: 7,
               color: "#1F1F1F",
+              borderWidth: 1,
+              borderColor: "#C97C25",
             }}
             placeholder="example@gmail.com"
           />
@@ -104,10 +106,11 @@ export default function Login({ navigation }) {
               width: "100%",
               padding: 10,
               borderRadius: 10,
-              
-              borderBottomColor : "#C97C25",
+              borderBottomColor: "#C97C25",
               marginTop: 7,
               color: "#1F1F1F",
+              borderWidth: 1,
+              borderColor: "#C97C25",
             }}
             placeholder="* * * * * * * * * * * * "
           />
@@ -221,7 +224,7 @@ export default function Login({ navigation }) {
             <Pressable android_ripple={{ color: "#00000030" }}>
               <Text
                 style={{
-                  marginBottom : 10,
+                  marginBottom: 10,
                   color: "#000",
                   textDecorationLine: "underline",
                 }}
