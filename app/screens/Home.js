@@ -1,15 +1,24 @@
 import { onAuthStateChanged } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
-import { View, Text, ImageBackground, Image, Pressable } from "react-native";
+import { View, Text, Image, Pressable } from "react-native";
 import Footer from "../components/Footer";
-import { auth } from "../core/firebaseConfig";
+import { auth, db } from "../core/firebaseConfig";
+import * as Animatable from "react-native-animatable";
 export default function Home({ navigation }) {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({ fName: "..." });
+  const [index, setIndex] = useState(0);
+  const getUser = async (id) => {
+    const snap = await getDoc(doc(db, "users", id));
+    if (snap.exists()) {
+      setUser(snap.data());
+    }
+  };
   useEffect(() => {
     if (auth) {
       const unsub = onAuthStateChanged(auth, (currentUser) => {
         if (currentUser) {
-          setUser(currentUser);
+          getUser(currentUser.uid);
         } else {
           navigation.replace("Login");
         }
@@ -39,10 +48,16 @@ export default function Home({ navigation }) {
         <Text
           style={{ fontSize: 20, fontFamily: "MontserratBold", marginTop: 20 }}
         >
-          Skin improvement with time
+          {index === 0
+            ? "Skin improvement with time"
+            : "Sleep time improvement"}
         </Text>
         <Image
-          source={require("../../assets/chart.png")}
+          source={
+            index === 0
+              ? require("../../assets/chart.png")
+              : require("../../assets/Chart1.png")
+          }
           style={{ margin: 15, borderRadius: 10, width: 370 }}
         />
         <View
@@ -53,7 +68,8 @@ export default function Home({ navigation }) {
             width: "80%",
           }}
         >
-          <View
+          <Animatable.View
+            animation={"zoomIn"}
             style={{
               backgroundColor: "#C97C2520",
               paddingHorizontal: 20,
@@ -67,13 +83,19 @@ export default function Home({ navigation }) {
             <Image
               resizeMode="contain"
               style={{ width: 30, height: 30 }}
-              source={require("../../assets/Lollipop.png")}
+              source={
+                index === 0
+                  ? require("../../assets/Lollipop.png")
+                  : require("../../assets/milk.png")
+              }
             />
             <Text style={{ fontFamily: "MontserratBold", color: "#C97C25" }}>
-              {"Less\nSugar"}
+              {index === 0 ? "Less\nSugar" : "Drink\nMilk"}
             </Text>
-          </View>
-          <View
+          </Animatable.View>
+
+          <Animatable.View
+            animation={"zoomIn"}
             style={{
               backgroundColor: "#C97C2520",
               borderWidth: 1,
@@ -91,8 +113,9 @@ export default function Home({ navigation }) {
             <Text style={{ fontFamily: "MontserratBold", color: "#C97C25" }}>
               {"Eat\nCarrot"}
             </Text>
-          </View>
-          <View
+          </Animatable.View>
+          <Animatable.View
+            duration={"zoomIn"}
             style={{
               backgroundColor: "#2D101010",
               paddingHorizontal: 20,
@@ -105,12 +128,16 @@ export default function Home({ navigation }) {
             <Image
               resizeMode="contain"
               style={{ width: 30, height: 30 }}
-              source={require("../../assets/Cheese.png")}
+              source={
+                index === 0
+                  ? require("../../assets/Cheese.png")
+                  : require("../../assets/gym.png")
+              }
             />
             <Text style={{ fontFamily: "MontserratBold", color: "#2D1010" }}>
-              {"Less\nCheese"}
+              {index === 0 ? "Less\nCheese" : "Practice\nregulary"}
             </Text>
-          </View>
+          </Animatable.View>
         </View>
         <View
           style={{
@@ -125,21 +152,30 @@ export default function Home({ navigation }) {
             Click for more infos
           </Text>
           <Pressable
+            onPress={() => setIndex(index === 0 ? 1 : 0)}
             android_ripple={{ color: "#ffffff60" }}
             style={{
               width: "100%",
               paddingVertical: 20,
-              backgroundColor: "#C97C25AA",
+              backgroundColor: index === 0 ? "#C97C25AA" : "#CAA29F",
               alignItems: "center",
               borderRadius: 10,
               marginTop: 7,
             }}
           >
             <Text style={{ color: "white", fontFamily: "MontserratBold" }}>
-              Sleep time
+              {index === 0 ? "Sleep time" : "Skin improvement with time"}
             </Text>
           </Pressable>
         </View>
+        <View
+          style={{
+            width: "70%",
+            height: 1,
+            backgroundColor: "#00000050",
+            marginTop: 20,
+          }}
+        />
         <View style={{ width: "80%", marginTop: 20 }}>
           <Text style={{ fontFamily: "MontserratBold", color: "#CAA29F" }}>
             Click for more infos

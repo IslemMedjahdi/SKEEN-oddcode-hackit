@@ -12,7 +12,6 @@ export default function SelectWearable({ navigation }) {
   const [session, setSession] = useState({});
   const selectHandler = async () => {
     console.log(session.url);
-    navigation.replace("Home");
     await WebBrowser.openBrowserAsync(session.url);
     navigation.replace("Home");
   };

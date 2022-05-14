@@ -10,6 +10,7 @@ export default function Footer({ navigation, index }) {
         justifyContent: "center",
         padding: 10,
         height: (10 * Dimensions.get("window").height) / 100,
+        backgroundColor: "white",
       }}
     >
       <View

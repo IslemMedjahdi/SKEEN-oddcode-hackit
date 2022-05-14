@@ -6,6 +6,7 @@ import {
   Dimensions,
   ScrollView,
   Pressable,
+  FlatList,
 } from "react-native";
 import Footer from "../components/Footer";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -13,6 +14,30 @@ import * as Animatable from "react-native-animatable";
 
 const HEIGHT = Dimensions.get("window").height;
 const WIDTH = Dimensions.get("window").width;
+
+const products = [
+  {
+    id: 1,
+    type: "Ordinary",
+    name: "Serum D",
+    price: "2000 DA",
+    image: require("../../assets/image1.png"),
+  },
+  {
+    id: 2,
+    type: "Curology",
+    name: "Anti-Aging",
+    price: "1550 DA",
+    image: require("../../assets/image2.png"),
+  },
+  {
+    id: 3,
+    type: "I’m fabulous",
+    name: "Body oil",
+    price: "3950 DA",
+    image: require("../../assets/image3.png"),
+  },
+];
 
 export default function Results({ navigation, route }) {
   const [photoResult, setPhotoResult] = useState("");
@@ -26,9 +51,11 @@ export default function Results({ navigation, route }) {
       );
     }
   });
+
   return (
-    <View style={{ backgroundColor: "white" }}>
+    <View style={{}}>
       <ScrollView
+        nestedScrollEnabled
         contentContainerStyle={{ alignItems: "center" }}
         style={{
           height: (90 * Dimensions.get("window").height) / 100,
@@ -372,6 +399,74 @@ export default function Results({ navigation, route }) {
             </View>
           </Pressable>
         </Animatable.View>
+        <View style={{ width: "80%", marginVertical: 10 }}>
+          <Text style={{ fontFamily: "MontserratBold" }}>
+            Recommanded Products
+          </Text>
+        </View>
+        <View style={{ width: "95%" }}>
+          <FlatList
+            contentContainerStyle={{ marginBottom: 20 }}
+            horizontal
+            nestedScrollEnabled
+            showsHorizontalScrollIndicator={false}
+            data={products}
+            keyExtractor={(item) => item.id}
+            renderItem={({ item }) => (
+              <View
+                style={{
+                  borderRadius: 10,
+                  marginRight: 10,
+                  overflow: "hidden",
+                }}
+              >
+                <Pressable
+                  android_ripple={{ color: "#00000010" }}
+                  style={{
+                    flexDirection: "row",
+                    alignItems: "center",
+                    backgroundColor: "white",
+                    paddingHorizontal: 15,
+                    paddingVertical: 10,
+                  }}
+                >
+                  <Image
+                    style={{ width: 60, height: 60, marginRight: 10 }}
+                    source={item.image}
+                  />
+                  <View>
+                    <Text
+                      style={{
+                        fontFamily: "Montserrat",
+                        color: "#B1B1B1",
+                      }}
+                    >
+                      {item.type}
+                    </Text>
+                    <Text
+                      style={{
+                        fontFamily: "Montserrat",
+                        color: "#494949",
+                        fontSize: 15,
+                      }}
+                    >
+                      {item.name}
+                    </Text>
+                    <Text
+                      style={{
+                        fontFamily: "Montserrat",
+                        color: "#F08F5F",
+                        fontSize: 15,
+                      }}
+                    >
+                      {item.price}
+                    </Text>
+                  </View>
+                </Pressable>
+              </View>
+            )}
+          />
+        </View>
       </ScrollView>
       <View>
         <Footer navigation={navigation} index={2} />
