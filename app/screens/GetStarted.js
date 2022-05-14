@@ -1,7 +1,12 @@
-import React from "react";
-import { View, Text, ImageBackground, Image, Pressable } from "react-native";
+import React, { useEffect } from "react";
+import { View, Text, ImageBackground, Image } from "react-native";
 import { StatusBar } from "react-native";
 export default function GetStarted({ navigation }) {
+  useEffect(() => {
+    setTimeout(() => {
+      navigation.replace("Description");
+    }, 2500);
+  }, []);
   return (
     <View style={{ flex: 1 }}>
       <StatusBar translucent={false} />
@@ -29,6 +34,7 @@ export default function GetStarted({ navigation }) {
               borderBottomLeftRadius: 0,
               borderBottomRightRadius: 0,
               alignItems: "center",
+              height: "57%",
             }}
           >
             <View style={{ alignItems: "center", width: "99%" }}>
@@ -45,7 +51,7 @@ export default function GetStarted({ navigation }) {
                   transform: [{ translateY: -40 }],
                 }}
               >
-                Carry
+                SKEEN
               </Text>
             </View>
             <View
@@ -57,35 +63,11 @@ export default function GetStarted({ navigation }) {
                 alignItems: "center",
               }}
             >
-              <Pressable
-                onPress={() => navigation.replace("Description")}
-                android_ripple={{ color: "#ffffff80" }}
-                style={{
-                  backgroundColor: "#1F1F1F",
-                  width: "80%",
-                  paddingVertical: 20,
-                  alignItems: "center",
-                  borderRadius: 10,
-                  justifyContent: "center",
-                  flexDirection: "row",
-                }}
+              <Text
+                style={{ color: "#000000", fontFamily: "Cinzel", fontSize: 22 }}
               >
-                <Text
-                  style={{
-                    color: "white",
-                    fontFamily: "MontserratBold",
-                    fontSize: 17,
-                    marginRight: 10,
-                  }}
-                >
-                  Get Started
-                </Text>
-                <Image
-                  resizeMode="contain"
-                  style={{ width: 30 }}
-                  source={require("../../assets/icon1.png")}
-                />
-              </Pressable>
+                “skincare is healthcare”
+              </Text>
             </View>
           </View>
         </View>

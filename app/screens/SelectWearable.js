@@ -1,14 +1,21 @@
 import { onAuthStateChanged } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { Dimensions, Pressable, Text, View, Image } from "react-native";
-import { auth } from "../core/firebaseConfig";
+import { auth, db } from "../core/firebaseConfig";
 import * as WebBrowser from "expo-web-browser";
+import { doc, getDoc } from "firebase/firestore";
 
 const WIDTH = Dimensions.get("window").width;
 const HEIGHT = Dimensions.get("window").height;
 
 export default function SelectWearable({ navigation }) {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({ fName: "..." });
+  const getUser = async (id) => {
+    const snap = await getDoc(doc(db, "users", id));
+    if (snap.exists()) {
+      setUser(snap.data());
+    }
+  };
   const [session, setSession] = useState({});
   const selectHandler = async () => {
     console.log(session.url);
@@ -73,7 +80,7 @@ export default function SelectWearable({ navigation }) {
     if (auth) {
       const unsub = onAuthStateChanged(auth, (currentUser) => {
         if (currentUser) {
-          setUser(currentUser);
+          getUser(currentUser.uid);
         } else {
           navigation.replace("Login");
         }
@@ -105,6 +112,45 @@ export default function SelectWearable({ navigation }) {
           justifyContent: "center",
         }}
       >
+        <Text
+          style={{
+            fontFamily: "Montserrat",
+            marginRight: 10,
+            fontSize: 23,
+            textAlign: "left",
+            width: "80%",
+          }}
+        >
+          Welcome {user.fName},
+        </Text>
+
+        <Pressable
+          android_ripple={{ color: "#ffffff50" }}
+          onPress={selectHandler}
+          style={{
+            padding: 20,
+            backgroundColor: "#1F1F1F",
+            width: "80%",
+            alignItems: "center",
+            borderRadius: 15,
+            marginTop: 30,
+          }}
+        >
+          <Text
+            style={{
+              color: "white",
+              color: "white",
+              fontFamily: "MontserratBold",
+            }}
+          >
+            Select wearable
+          </Text>
+        </Pressable>
+        <Image
+          resizeMode="contain"
+          style={{ width: "95%", height: "50%" }}
+          source={require("../../assets/dashboard.png")}
+        />
         <View
           style={{ width: "80%", flexDirection: "row", alignItems: "center" }}
         >
@@ -123,32 +169,6 @@ export default function SelectWearable({ navigation }) {
             source={require("../../assets/terralogo.png")}
           />
         </View>
-        <Pressable
-          android_ripple={{ color: "#ffffff50" }}
-          onPress={selectHandler}
-          style={{
-            padding: 20,
-            backgroundColor: "#1F1F1F",
-            width: "80%",
-            alignItems: "center",
-            borderRadius: 15,
-          }}
-        >
-          <Text
-            style={{
-              color: "white",
-              color: "white",
-              fontFamily: "MontserratBold",
-            }}
-          >
-            Select wearable
-          </Text>
-        </Pressable>
-        <Image
-          resizeMode="contain"
-          style={{ width: "95%", height: "50%" }}
-          source={require("../../assets/dashboard.png")}
-        />
       </View>
     </View>
   );

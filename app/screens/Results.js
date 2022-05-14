@@ -178,14 +178,15 @@ export default function Results({ navigation, route }) {
                   overflow: "hidden",
                 }}
               >
-                <View
+                <Animatable.View
+                  animation={"slideInLeft"}
                   style={{
                     width: "68%",
                     backgroundColor: "#D88181",
                     height: "100%",
                     borderRadius: 10,
                   }}
-                ></View>
+                ></Animatable.View>
               </View>
             </View>
           </View>
@@ -211,14 +212,16 @@ export default function Results({ navigation, route }) {
                   overflow: "hidden",
                 }}
               >
-                <View
+                <Animatable.View
+                  animation={"slideInLeft"}
+                  delay={100}
                   style={{
                     width: "52%",
                     backgroundColor: "#CAA29F",
                     height: "100%",
                     borderRadius: 10,
                   }}
-                ></View>
+                ></Animatable.View>
               </View>
             </View>
           </View>
@@ -244,14 +247,16 @@ export default function Results({ navigation, route }) {
                   overflow: "hidden",
                 }}
               >
-                <View
+                <Animatable.View
+                  delay={200}
+                  animation={"slideInLeft"}
                   style={{
                     width: "35%",
                     backgroundColor: "#C57722",
                     height: "100%",
                     borderRadius: 10,
                   }}
-                ></View>
+                ></Animatable.View>
               </View>
             </View>
           </View>
@@ -261,7 +266,12 @@ export default function Results({ navigation, route }) {
             <Text style={{ fontFamily: "MontserratBold", fontSize: 16 }}>
               About Acne
             </Text>
-            <Animatable.View animation={"fadeInLeft"} duration={700} delay={0}>
+            <Animatable.View
+              style={{ width: "100%" }}
+              animation={"fadeInLeft"}
+              duration={700}
+              delay={0}
+            >
               <Pressable
                 android_ripple={{ color: "#ffffff50" }}
                 style={{
@@ -291,6 +301,7 @@ export default function Results({ navigation, route }) {
               Some Tips
             </Text>
             <Animatable.View
+              style={{ width: "100%" }}
               animation={"fadeInRight"}
               duration={700}
               delay={500}
@@ -319,15 +330,18 @@ export default function Results({ navigation, route }) {
                     fontFamily: "Montserrat",
                   }}
                 >
-                  {
-                    "- Deep breathing exercises.\n - Meditation.\n - Mindfulness meditation.\n - Progressive muscle relaxation"
-                  }
+                  {"- Deep breathing exercises.\n - Meditation."}
                 </Text>
               </Pressable>
             </Animatable.View>
           </View>
         </View>
-        <Animatable.View animation={"fadeInLeft"} duration={700} delay={1000}>
+        <Animatable.View
+          style={{ width: "100%", alignItems: "center" }}
+          animation={"fadeInLeft"}
+          duration={700}
+          delay={1000}
+        >
           <Pressable
             android_ripple={{ color: "#ffffff50" }}
             style={{
@@ -338,8 +352,8 @@ export default function Results({ navigation, route }) {
               padding: 20,
             }}
           >
-            <View>
-              <View>
+            <View style={{ width: "100%" }}>
+              <View style={{ width: "100%" }}>
                 <Text
                   style={{
                     color: "white",
@@ -355,15 +369,18 @@ export default function Results({ navigation, route }) {
                     fontFamily: "Montserrat",
                   }}
                 >
-                  {
-                    "- Choosing whole grain foods.\n -  Eating protein foods.  \n - Limiting highly and ultra-processed foods.\n - Making water your drink of choice."
-                  }
+                  {"- Choosing whole grain foods.\n -  Eating protein foods."}
                 </Text>
               </View>
             </View>
           </Pressable>
         </Animatable.View>
-        <Animatable.View animation={"fadeInRight"} duration={700} delay={1500}>
+        <Animatable.View
+          style={{ width: "100%", alignItems: "center" }}
+          animation={"fadeInRight"}
+          duration={700}
+          delay={1500}
+        >
           <Pressable
             android_ripple={{ color: "#ffffff50" }}
             style={{
@@ -392,7 +409,7 @@ export default function Results({ navigation, route }) {
                   }}
                 >
                   {
-                    " - Stick to a sleep schedule.\n - Pay attention to what you eat and drink. \n - Create a restful environment. \n - Limit daytime naps."
+                    " - Stick to a sleep schedule.\n - Pay attention to what you eat and drink."
                   }
                 </Text>
               </View>

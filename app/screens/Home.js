@@ -6,19 +6,13 @@ import Footer from "../components/Footer";
 import { auth, db } from "../core/firebaseConfig";
 import * as Animatable from "react-native-animatable";
 export default function Home({ navigation }) {
-  const [user, setUser] = useState({ fName: "..." });
   const [index, setIndex] = useState(0);
-  const getUser = async (id) => {
-    const snap = await getDoc(doc(db, "users", id));
-    if (snap.exists()) {
-      setUser(snap.data());
-    }
-  };
+
   useEffect(() => {
     if (auth) {
       const unsub = onAuthStateChanged(auth, (currentUser) => {
         if (currentUser) {
-          getUser(currentUser.uid);
+          // getUser(currentUser.uid);
         } else {
           navigation.replace("Login");
         }
@@ -108,14 +102,18 @@ export default function Home({ navigation }) {
             <Image
               resizeMode="contain"
               style={{ width: 30, height: 30 }}
-              source={require("../../assets/Carrot.png")}
+              source={
+                index === 0
+                  ? require("../../assets/Peanuts.png")
+                  : require("../../assets/Salad.png")
+              }
             />
             <Text style={{ fontFamily: "MontserratBold", color: "#C97C25" }}>
-              {"Eat\nCarrot"}
+              {index === 0 ? "Eat\nnuts    " : "Eat\nhealthy"}
             </Text>
           </Animatable.View>
           <Animatable.View
-            duration={"zoomIn"}
+            animation={"zoomIn"}
             style={{
               backgroundColor: "#2D101010",
               paddingHorizontal: 20,
@@ -130,12 +128,12 @@ export default function Home({ navigation }) {
               style={{ width: 30, height: 30 }}
               source={
                 index === 0
-                  ? require("../../assets/Cheese.png")
+                  ? require("../../assets/Ice.png")
                   : require("../../assets/gym.png")
               }
             />
             <Text style={{ fontFamily: "MontserratBold", color: "#2D1010" }}>
-              {index === 0 ? "Less\nCheese" : "Practice\nregulary"}
+              {index === 0 ? "Drink\nWater" : "Practice\nregulary"}
             </Text>
           </Animatable.View>
         </View>

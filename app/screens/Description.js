@@ -36,7 +36,7 @@ export default function Description({ navigation }) {
         }}
       >
         <Text style={{ fontFamily: "Cinzel", fontSize: 30 }}>
-          what’s Carry?
+          what’s SKEEN?
         </Text>
         <Text
           style={{
@@ -47,9 +47,9 @@ export default function Description({ navigation }) {
             lineHeight: 22,
           }}
         >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-          vulputate libero et velit interdum, ac aliquet odio mattis. Class
-          aptent taciti sociosqu ad litora torquent per conubia nostra, per
+          Skeen is a mobile application that allows you to detect your skin
+          problems, and their potential causes and offers you personalized
+          advice, all this in order to improve the quality of your skin.
         </Text>
         <View
           style={{

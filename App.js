@@ -14,9 +14,12 @@ import SelectWearable from "./app/screens/SelectWearable";
 import Home from "./app/screens/Home";
 import Camera from "./app/screens/Camera";
 import Results from "./app/screens/Results";
+import { LogBox } from "react-native";
 
 export default function App() {
   const [fontLoaded, setfontLoaded] = useState(false);
+  console.disableYellowBox = true;
+  LogBox.ignoreAllLogs(); //Ignore all log notifications
 
   const fetchFont = () => {
     return Font.loadAsync({
